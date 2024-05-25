@@ -4,7 +4,6 @@ import { commands } from "./commands";
 import { deployCommands } from "./DeployCommands";
 
 
-const guildId = "1243646222338625587";
 
 const client = new Client({
   intents: ["Guilds", "GuildMessages", "DirectMessages"],
@@ -12,7 +11,9 @@ const client = new Client({
 
 client.on('ready', () => {  
     console.log(`Logged in as ${client.user?.tag ?? 'Unknown user'}`);
-    deployCommands({ guildId });
+    client.guilds.cache.forEach(guild=>{
+      deployCommands({ guildId:guild.id });
+    })
 });
 
 
@@ -26,7 +27,7 @@ client.on("interactionCreate", async (interaction) => {
     }
   
     const { commandName } = interaction;
-    console.log(`Command "${commandName}" used by ${interaction.user.tag}`);
+    // console.log(`Command "${commandName}" used by ${interaction.user.tag}`);
   
     if (commands[commandName as keyof typeof commands]) {
       commands[commandName as keyof typeof commands].execute(interaction);
