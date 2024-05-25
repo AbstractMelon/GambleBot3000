@@ -65,7 +65,7 @@ export async function execute(interaction: CommandInteraction) {
   let scroll = '';
 
   let embed = createRouletteEmbed(scroll);
-  await interaction.reply({ embeds: [embed] });
+  await interaction.reply({ embeds: [embed] , ephemeral: true});
 
   for (let i = 0; i < 10; i++) {
     scroll += slotItems[i % 2];
