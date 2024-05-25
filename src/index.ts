@@ -4,7 +4,6 @@ import { commands } from "./commands";
 import { deployCommands } from "./DeployCommands";
 
 
-const guildId = "1243646222338625587";
 
 const client = new Client({
   intents: ["Guilds", "GuildMessages", "DirectMessages"],
