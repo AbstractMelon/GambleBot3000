@@ -12,7 +12,9 @@ const client = new Client({
 
 client.on('ready', () => {  
     console.log(`Logged in as ${client.user?.tag ?? 'Unknown user'}`);
-    deployCommands({ guildId });
+    client.guilds.cache.forEach(guild=>{
+      deployCommands({ guildId:guild.id });
+    })
 });
 
 
