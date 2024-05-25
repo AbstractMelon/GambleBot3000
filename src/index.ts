@@ -21,13 +21,17 @@ client.on("guildCreate", async (guild) => {
 });
 
 client.on("interactionCreate", async (interaction) => {
-  if (!interaction.isCommand()) {
-    return;
-  }
-  const { commandName } = interaction;
-  if (commands[commandName as keyof typeof commands]) {
-    commands[commandName as keyof typeof commands].execute(interaction);
-  }
-});
+    if (!interaction.isCommand()) {
+      return;
+    }
+  
+    const { commandName } = interaction;
+    console.log(`Command "${commandName}" used by ${interaction.user.tag}`);
+  
+    if (commands[commandName as keyof typeof commands]) {
+      commands[commandName as keyof typeof commands].execute(interaction);
+    }
+  });
+  
 
 client.login(config.DISCORD_TOKEN);
