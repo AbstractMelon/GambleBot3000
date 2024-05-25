@@ -27,5 +27,5 @@ export async function execute(interaction: CommandInteraction) {
     .setDescription(`You spun the wheel and got: **${result.prize}**`)
     .setColor(result.win ? 'Green' : 'Red');
 
-  await interaction.reply({ embeds: [embed] });
+  await interaction.reply({ embeds: [embed], ephemeral: true});
 }
